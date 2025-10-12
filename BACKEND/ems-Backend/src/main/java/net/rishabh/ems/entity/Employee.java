@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -25,5 +25,4 @@ public class Employee {
 
     @Column(name = "Email", nullable = false, unique = true)
     private String email;
-
 }
