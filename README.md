@@ -1,2 +1,2 @@
 # Employee-Management-System
-Efficient management of Employees in corresponding Departments
+Full-stack Employee Management System built with Spring Boot and React, featuring CRUD operations and MySQL integration.
