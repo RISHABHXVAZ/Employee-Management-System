@@ -1,4 +1,5 @@
 import './App.css'
+import DeleteEmployeeComponent from './components/DeleteEmployeeComponent'
 import EmployeeComponent from './components/EmployeeComponent'
 import FooterComponent from './components/FooterComponent'
 import HeaderComponent from './components/HeaderComponent'
@@ -16,6 +17,7 @@ function App() {
         <Route path='/employees' element={<ListEmployeeComponent />}></Route>
         <Route path='/add-employee' element= {<EmployeeComponent />}></Route>
         <Route path='/edit-employee/:id' element = {<EmployeeComponent />}></Route>
+        <Route path='/delete-employee/:id' element = {<DeleteEmployeeComponent />}></Route>
        </Routes>
 
       <FooterComponent/>

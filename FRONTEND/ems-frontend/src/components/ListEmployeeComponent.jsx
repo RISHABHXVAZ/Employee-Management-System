@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { listEmployees } from "../services/EmployeeService"
 import { useNavigate } from "react-router-dom"
+import { deleteEmployee } from "../services/EmployeeService"
 
 const ListEmployeeComponent = () => {
 
@@ -8,12 +9,16 @@ const ListEmployeeComponent = () => {
     const navigator = useNavigate()
 
  useEffect(() => {
-    listEmployees().then((response) => {
+    getAllEmployees()
+}, [])  // Empty dependency array, so it runs only once when the component is mounted.
+
+    function getAllEmployees(){
+        listEmployees().then((response) => {
         setEmployee(response.data);
     }).catch(error => {
         console.error(error);
     })
-}, [])  // Empty dependency array, so it runs only once when the component is mounted.
+    }
 
     function addNewEmployee(){
         navigator('/add-employee')
@@ -22,6 +27,10 @@ const ListEmployeeComponent = () => {
     function updateEmployee(id){
         navigator(`/edit-employee/${id}`)
 
+    }
+
+    function removeEmployee(id){
+        navigator(`/delete-employee/${id}`)
     }
 
   return (
@@ -46,7 +55,9 @@ const ListEmployeeComponent = () => {
                             <td>{employee.firstName}</td>
                             <td>{employee.lastName}</td>
                             <td>{employee.email}</td>
-                            <td><button className="btn btn-primary mb-6" onClick={() => updateEmployee(employee.id)}>Update</button></td>
+                            <td><button className="btn btn-primary mb-6 m-2" onClick={() => updateEmployee(employee.id)}>Update</button>
+                            <button className="btn btn-danger" onClick={() => removeEmployee(employee.id)}>Delete</button>
+                            </td>
                         </tr>
                     )
                 }
